@@ -6,11 +6,11 @@ import java.io.IOException;
  */
 public class main {
     public static void main(String[] args) throws IOException {
-        /*GUI_original app = new GUI_original();
-        app.setVisible(true);*/
-        String path;
+        GUI_original app = new GUI_original();
+        app.setVisible(true);
+        /*String path;
         path = "C:\\Users\\Vol4onka\\Desktop\\картинки\\test\\rZ-1OeqY-Fs.jpg";
-        Grayscale.grayscale(path);
+        Grayscale.grayscale(path);*/
     }
 }
 

@@ -2,7 +2,7 @@
  * Created by Vol4onka on 23.01.2018.
  */
 public class Linearizer {
-    public static double linearize(final int srgb){
+    public static double linearize( int srgb){
         double Dsrgb=srgb;
         double cLinear = 0;
         if(Dsrgb<=0.04045)
