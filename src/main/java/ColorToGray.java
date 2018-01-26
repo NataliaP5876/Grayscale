@@ -17,8 +17,6 @@ public class ColorToGray {
         }
         ysRGB = (int)lin_ysRGB;
 
-        /*if(R+G+B>0)
-            System.out.println(R + " " + G + " " + " " + B + lin_ysRGB + " " + ysRGB);*/
         return ysRGB;
     }
 }

@@ -16,13 +16,13 @@ public class Grayscale {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Color c = new Color(img.getRGB(i,j));
-                /*int a = (c.getAlpha());*/
+                int a = (c.getAlpha());
                 int r = (c.getRed());
                 int g = (c.getGreen());
                 int b = (c.getBlue());
                 int color = ColorToGray.colorToGray(r,g,b);
-                /*int color = (r+g+b)/3;*/
-                Color newColor = new Color(color,color,color);
+                //int color = (r+g+b)/3;
+                Color newColor = new Color(color,color,color,a);
                 img.setRGB(i,j,newColor.getRGB());
             }
         }

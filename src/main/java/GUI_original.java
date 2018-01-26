@@ -25,12 +25,12 @@ public class GUI_original extends JFrame {
         super("HM Grayscale");
         this.setBounds(200,200,1200,800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        img1.setPreferredSize(new Dimension(500, 700));
+        img2.setPreferredSize(new Dimension(500, 700));
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(1,2,2,2));
         JPanel col1 = new JPanel();
         col1.setLayout(new GridBagLayout());
-
         JPanel col2 = new JPanel();
         col2.setLayout(new GridBagLayout());
 
@@ -85,7 +85,7 @@ public class GUI_original extends JFrame {
     }
 
     class OpenFile implements ActionListener {
-        public void actionPerformed (ActionEvent e){
+        public void actionPerformed (ActionEvent e) {
             JFileChooser fileopen = new JFileChooser("C:\\Users\\Vol4onka\\Desktop\\image\\test");
             fileopen.setFileHidingEnabled(false);
             fileopen.setAcceptAllFileFilterUsed(false);
@@ -97,21 +97,33 @@ public class GUI_original extends JFrame {
             if (ret == JFileChooser.APPROVE_OPTION) {
                 File file = fileopen.getSelectedFile();
                 pathInput = file.getPath();
-                //img1 = file.;
                 BufferedImage myPicture = null;
                 try {
                     myPicture = ImageIO.read(new File(pathInput));
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-                picLabel1.setIcon(new ImageIcon(myPicture));
+                if (myPicture.getHeight()>=myPicture.getWidth() && myPicture.getHeight()>600){
+                    Image scaled = myPicture.getScaledInstance(-1,600, Image.SCALE_SMOOTH);
+                    picLabel1.setIcon(new ImageIcon(scaled));
+                }
+                else {
+                    if (myPicture.getHeight() < myPicture.getWidth() && myPicture.getWidth() > 600) {
+                        Image scaled = myPicture.getScaledInstance(600, -1, Image.SCALE_SMOOTH);
+                        picLabel1.setIcon(new ImageIcon(scaled));
+                    }
+                    else {
+                        picLabel1.setIcon(new ImageIcon(myPicture));
+                    }
+                }
+
                 input.setText("Original image:");
             }
         }
     }
 
     class StartGrayscale implements ActionListener {
-        public void actionPerformed (ActionEvent e){
+        public void actionPerformed (ActionEvent e) {
             JFileChooser fileSaveDirectoty = new JFileChooser("C:\\Users\\Vol4onka\\Desktop\\image\\test");
             fileSaveDirectoty.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int ret = fileSaveDirectoty.showDialog(null,"Select directory");
@@ -129,10 +141,21 @@ public class GUI_original extends JFrame {
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-                picLabel2.setIcon(new ImageIcon(myPicture));
+                if (myPicture.getHeight()>=myPicture.getWidth() && myPicture.getHeight()>600){
+                    Image scaled = myPicture.getScaledInstance(-1,600, Image.SCALE_SMOOTH);
+                    picLabel2.setIcon(new ImageIcon(scaled));
+                }
+                else {
+                    if (myPicture.getHeight() < myPicture.getWidth() && myPicture.getWidth() > 600) {
+                        Image scaled = myPicture.getScaledInstance(600, -1, Image.SCALE_SMOOTH);
+                        picLabel2.setIcon(new ImageIcon(scaled));
+                    }
+                    else {
+                        picLabel2.setIcon(new ImageIcon(myPicture));
+                    }
+                }
                 output.setText("Result:");
             }
-
         }
     }
 }
