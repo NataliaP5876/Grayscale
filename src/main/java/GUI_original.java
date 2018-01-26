@@ -1,4 +1,3 @@
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -89,8 +88,8 @@ public class GUI_original extends JFrame {
             JFileChooser fileopen = new JFileChooser("C:\\Users\\Vol4onka\\Desktop\\image\\test");
             fileopen.setFileHidingEnabled(false);
             fileopen.setAcceptAllFileFilterUsed(false);
-            String[] extensions= {"png","jpg","jpeg"};
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("image (*.png, *.jpg, *.jpeg)",extensions);
+            String[] extensions= {"jpg","jpeg"};
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("image (*.jpg, *.jpeg)",extensions);
             fileopen.setFileFilter(filter);
 
             int ret = fileopen.showDialog(null, "Open image");
